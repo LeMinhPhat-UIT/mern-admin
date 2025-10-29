@@ -1,5 +1,5 @@
 trigger:
-- main  # hoặc master, nếu repo bạn có nhánh đó
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
