@@ -1,19 +1,26 @@
 trigger:
-- main  # hoặc master, nếu repo bạn dùng nhánh đó
+- main  # hoặc master, nếu repo bạn có nhánh đó
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+# Cài Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
   displayName: 'Install Node.js'
 
+# Cài dependencies
 - script: |
     npm install
+  displayName: 'Install dependencies'
+
+# Build project (nếu có)
+- script: |
     npm run build || echo "No build script found"
   displayName: 'Build project'
 
+# Thông báo thành công
 - script: echo " Build completed successfully!"
   displayName: 'Success message'
